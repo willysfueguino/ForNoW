@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=titleUser %></title>
+    <%- include("partials/head") %>
+  </head>
+  <body>
+    <%- include("partials/navBar") %>
+    <div class="container">
+      <a href="/createUser" class="btn btn-outline-primary mt-4"
+        ><i class="bx bxs-plus-circle bx-lg"></i
+      ></a>
+      <a href="/" class="btn btn-outline-success mt-4"
+        ><i class="bx bxs-home-alt-2 bx-lg"></i
+      ></a>
+      <table
+        class="table table-danger table-bordered table-striped text-center mt-4"
+      >
+        <thead>
+          <tr>
+            <th scope="col">N°</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Email</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% results.forEach((users)=>{ %>
+          <tr>
+            <td><%= users.id %></td>
+            <td><%= users.firstName %></td>
+            <td><%= users.email %></td>
+            <td>
+              <a href="/editUser/<%= users.id %>" class="btn btn-success"
+                >EDITAR</a
+              >
+              <a href="/deleteUser/<%= users.id %>" class="btn btn-danger"
+                >ELIMINAR</a
+              >
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <%- include("partials/footer") %>
+  </body>
+</html>

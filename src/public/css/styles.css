@@ -1,0 +1,8 @@
+body {
+  background-color: black;
+}
+
+.imagenUsuario {
+  background-color: black;
+  display: flex;
+}

@@ -2,6 +2,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const path = require("path");
+const helmet = require("helmet");
 const cors = require("cors");
 const { TestConnection, port } = require("./database/database");
 const indexRouter = require("./routes/index.routes");
@@ -14,11 +15,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(cors());
+// app.use(helmet());
 
-//establecemos la ruta de la carpeta estatica para los archivos css y js publicos
-app.set(express.static(path.join(__dirname, "public")));
 //motor de vistas de ejs
 app.set("view engine", "ejs");
+// app.locals.url_for = function (path) {
+//   return path;
+// };
+//establecemos la ruta de la carpeta estatica para los archivos css y js publicos
+app.set(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(process.cwd(), "/images")))
+
 //establecemos la carpeta views para que encuentre dinamicamente
 app.set("views", path.join(__dirname, "views"));
 

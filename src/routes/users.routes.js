@@ -1,6 +1,6 @@
 const userRoutes = require("express").Router();
 const { controllerUsers } = require("../controllers/user.controller");
-const User = require("../models/users.models");
+const User = require("../models/entries.model");
 
 //ruta GET INDEX
 //userRoutes.get("/user", controllerUsers.indexUsers);

@@ -2,15 +2,20 @@ const { DataTypes } = require("sequelize");
 const { sequelize } = require("../database/database");
 
 const User = sequelize.define(
-  "User",
+  "Entry",
   {
     // Model attributes are defined here
-    firstName: {
-      type: DataTypes.STRING,
+    entrySubject: {
+      type: DataTypes.STRING(150),
+      allowNull:false
     },
-    email: {
-      type: DataTypes.STRING,
-      // allowNull defaults to trues
+    entryText: {
+      type: DataTypes.STRING(500000),
+      allowNull: false,
+    },
+    pictureLink: {
+      type: DataTypes.STRING(300),
+      allowNull: true,
     },
   },
   {

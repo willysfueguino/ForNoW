@@ -1,4 +1,4 @@
-const User = require("../models/users.models");
+const User = require("../models/entries.model");
 const controllerUsers = {};
 
 //TODO: INDEX USER

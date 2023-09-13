@@ -23,12 +23,11 @@ app.set("view engine", "ejs");
 //   return path;
 // };
 //establecemos la ruta de la carpeta estatica para los archivos css y js publicos
-app.set(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(process.cwd(), "/images")))
+app.use('/public', express.static(path.join(__dirname, "./public")));
+// app.use(express.static(path.join(process.cwd(), "/images")))
 
 //establecemos la carpeta views para que encuentre dinamicamente
-app.set("views", path.join(__dirname, "views"));
-
+app.set("views", path.join(__dirname, "./views"));
 // console.log(__dirname, "views");
 TestConnection();
 

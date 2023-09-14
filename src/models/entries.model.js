@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../database/database");
 
-const User = sequelize.define(
+const Entry = sequelize.define(
   "Entry",
   {
     // Model attributes are defined here
@@ -9,7 +9,7 @@ const User = sequelize.define(
       type: DataTypes.STRING(150),
       allowNull:false
     },
-    entryText: {
+    entryBody: {
       type: DataTypes.STRING(500000),
       allowNull: false,
     },
@@ -24,5 +24,5 @@ const User = sequelize.define(
 );
 
 // `sequelize.define` also returns the model
-console.log(User === sequelize.models.User); // true
-module.exports = User;
+console.log(Entry === sequelize.models.Entry); // true
+module.exports = Entry;

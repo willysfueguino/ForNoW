@@ -4,12 +4,23 @@
 }
 
 #navbar {
+  display: flex;
   height: 4rem;
   padding: 0px 0px;
 }
-
 .navLogo{
   display: flex;
   justify-content: left;
   align-items: center;
+}
+
+#searchForm{
+  width: 20%;
+}
+
+#carouselExample{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content:center;
 }

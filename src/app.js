@@ -6,7 +6,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 const { TestConnection, port } = require("./database/database");
 const indexRouter = require("./routes/index.routes");
-const userRoutes = require("./routes/users.routes");
+const entriesRoutes = require("./routes/entries.routes");
 
 const app = express();
 
@@ -23,7 +23,7 @@ app.set("view engine", "ejs");
 //   return path;
 // };
 //establecemos la ruta de la carpeta estatica para los archivos css y js publicos
-app.use('/public', express.static(path.join(__dirname, "./public")));
+app.use(express.static(path.join(__dirname, "public")));
 // app.use(express.static(path.join(process.cwd(), "/images")))
 
 //establecemos la carpeta views para que encuentre dinamicamente
@@ -32,7 +32,7 @@ app.set("views", path.join(__dirname, "./views"));
 TestConnection();
 
 app.use(indexRouter);
-app.use(userRoutes);
+app.use(entriesRoutes);
 
 app.listen(port, () => {
   console.log(`Servidor funcionando en el puerto ${port}`);

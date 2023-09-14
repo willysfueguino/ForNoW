@@ -1,13 +1,13 @@
 {
-  "name": "express-server1",
+  "name": "ForNoW Blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "A blog called Forum Not Wordpress",
   "main": "app.js",
   "scripts": {
     "dev": "nodemon ./src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "subzero_devs",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,8 +1,15 @@
-<nav class="bg-dark" id="navbar">
+<nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark" id="navbar">
   <div class="container-fluid">
     <a class="navLogo" href="/">
-      <img src="/public/assets/img/navbar-logo.png" alt="" width="96" height="72" class=" align-text-top">
-
+      <img src="/assets/img/navbar-logo.png" alt="" width="112" height="72" class=" align-text-top">
     </a>
+    <form class="d-flex collapse" role="search" id="searchForm" method="POST" action="/searchPost">
+      <input class="form-control me-2 search-input" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">
+        <box-icon  name='search-alt' animation='tada' color='#1ffe0d'>
+        </box-icon>
+      </button>
+    </form>
+    
   </div>
 </nav>

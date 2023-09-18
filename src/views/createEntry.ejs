@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=titleCreateUser%></title>
+    <%- include("partials/head")%>
+  </head>
+  <body>
+    <%- include("partials/navBar")%>
+    <!-- <%- include("partials/main")%> -->
+    <div class="card bg-dark text-white">
+      <img class="card-img" src="/assets/img/header-bg.jpg" alt="Card image">
+      <div class="card-img-overlay" >
+        <div class="card text-white bg-secondary mb-3"  id="createPostCard" style="max-width: 35rem; opacity: 0.80">
+          <div class="card-header" style="align-items: center;">Crear Nuevo Post</div>
+          <div class="card-body">
+            <form action="/saveEntry" method="post">
+              <div class="mb-3">
+                <label for="user" class="form-label">Titulo del Post:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="entrySubject"
+                  name="entrySubject"
+                  placeholder="Titulo"
+                  tabindex="2"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="user" class="form-label">Texto del post:</label>
+                <input
+                  type="text"
+                  size="500000"
+                  rows="10"
+                  col="10"
+                  style="width:500px; height:300px;"
+                  class="form-control"
+                  id="entryBody"
+                  name="entryBody"
+                  placeholder="Inserte un texto"
+                  tabindex="1"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label for="user" class="form-label">Link de la imagen (opcional)</label>
+                <input
+                  type="url"
+                  class="form-control"
+                  id="pictureLink"
+                  name="pictureLink"
+                  placeholder="Link de la imagen"
+                  tabindex="2"
+                />
+              </div>
+              <a href="/">
+                <button type="button" class="btn btn-danger btn-lg " id="cancelButton">
+                Cancelar
+                </button>
+              </a>
+              <button type="submit" class="btn btn-primary btn-lg " id="saveButton" >
+                Guardar
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="card-img-overlay border-success mb-3 text-center" style="display:flex;
+          background-color: rgba(0, 0, 0, 0.3); width:100%; height: 100%;align-items:center ">
+            <div class="card-header">Header</div>
+            <div class="card-body text-success">
+              <h5 class="card-title text-warning">Success card title</h5>
+              <p class="card-text text-warning">Some quick example text to build on the card title and make up the bulk
+               of the card's content.</p>
+            </div>
+    </div>
+
+    <div class="container mt-4">
+      <div class="card border-secondary">
+        <div class="card-header">Nuevo Post</div>
+        <div class="card-body">
+          <form action="/saveEntry" method="post">
+            <div class="mb-3">
+              <label for="user" class="form-label">Texto del post:</label>
+              <input
+                type="text"
+                size="500000"
+                rows="10"
+                col="10"
+                style="width:200px; height:50px;"
+                class="form-control"
+                id="entryBody"
+                name="entryBody"
+                placeholder="Inserte un texto"
+                tabindex="1"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="user" class="form-label">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                placeholder="Email del usuario"
+                tabindex="2"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary" tabindex="3">
+              Guardar
+            </button>
+            <a href="/user" class="btn btn-secondary">Cancelar</a>
+          </form>
+        </div>
+      </div>
+    </div> -->
+
+    <%- include("partials/footer")%>
+  </body>
+</html>

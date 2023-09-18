@@ -6,54 +6,40 @@ const entriesController = {};
 //   res.render("user", { titleuser: "Usuarios" });
 // };
 //TODO: GETALL
-entriesController.getAllUsers = async (req, res) => {
-  const users = await Entry.findAll();
+entriesController.getAllEntries = async (req, res) => {
+  const entries = await Entry.findAll();
 
-  res.render("user", { titleUser: "Usuarios", results: users });
+  res.render("Entry", { titleUser: "Posts", results: entries });
 };
 
-//TODO: GET
-// entriesController.getUserById = async (req, res) => {
-//   const { id } = req.params;
-//   try {
-//     const user = await Entry.findOne({ where: { id: id } });
-//     if (!user) {
-//       return res.status(400).send({
-//         message: "Usuario no encontrado en la base de datos",
-//       });
-//     } else {
-//       return res.send(user);
-//     }
-//   } catch (error) {}
-// };
-
 //TODO: POST: PAGINA DE INICIO
-entriesController.formCreateUser = (req, res) => {
-  res.render("createUser", { titleCreateUser: "Nuevo Usuario" });
+entriesController.formCreateEntry = (req, res) => {
+  res.render("createEntry", { titleCreateUser: "Nuevo Post" });
 };
 
 //PARA CREAR AL USUARIO
-entriesController.postUser = async (req, res) => {
-  const { firstName, email } = req.body;
-
+entriesController.postEntry = async (req, res) => {
+  const { entrySubject, entryBody, pictureLink } = req.body;
+  console.log(req.body);
   //validacion para los datos del body
-  if (!firstName || !email)
+  if (!entrySubject || !entryBody)
     return res.status(400).send({
       message: "Por favor ingresar los datos del nombre y apellido del usuario",
     });
   //manejamos el error con trycatch
   try {
-    const user = {
-      firstName: firstName,
-      email: email,
+    const entry = {
+      entrySubject: entrySubject,
+      entryBody: entryBody,
+      pictureLink: pictureLink
     };
-    if (!user) {
+    if (!entry) {
       return res
         .status(409)
         .send({ message: "Usuario ya existe en la base de datos" });
     } else {
-      const newUser = await Entry.create(user);
-      return res.redirect("/user");
+      const newEntry = await Entry.create(entry);
+      return res.redirect("/entries");
       //res.send({ message: "Usuario creado con exito" });
     }
   } catch (error) {
@@ -63,7 +49,7 @@ entriesController.postUser = async (req, res) => {
 };
 
 //TODO: PUT PAGINA PARA EDITAR USUARIO
-entriesController.formEditUser = async (req, res) => {
+entriesController.formEditEntry = async (req, res) => {
   const { id } = req.params;
   const user = await Entry.findOne({ where: { id: id } });
   console.log(user);
@@ -73,7 +59,7 @@ entriesController.formEditUser = async (req, res) => {
   });
 };
 
-entriesController.putUser = async (req, res) => {
+entriesController.putEntry = async (req, res) => {
   const { firstName, email, id } = req.body;
   //validación de que no mande el dato del nombre para actualizar
   if (!firstName || !email) {
@@ -82,25 +68,25 @@ entriesController.putUser = async (req, res) => {
         "Es necesario que el parametro firstName o LastName tenga información para actualizar",
     });
   }
-  const updateUser = Entry.update(
+  const updateEntry = Entry.update(
     {
       firstName: firstName,
       email: email,
     },
     { where: { id: id } }
   );
-  return res.redirect("/user");
+  return res.redirect("/entries");
   //res.send({ message: "Usuario editado con exito" });
 };
 
 //TODO:DELETE
 
-entriesController.deleteUser = (req, res) => {
+entriesController.deleteEntry = (req, res) => {
   const { id } = req.params;
-  const deleteUser = Entry.destroy({ where: { id: id } });
+  const deleteEntry = Entry.destroy({ where: { id: id } });
   //validacion para saber si ya existe o no en la bd
-  if (deleteUser) {
-    return res.redirect("/user");
+  if (deleteEntry) {
+    return res.redirect("/entries");
     // res
     //   .status(200)
     //   .send({ message: "Usuario eliminado de la base de datos" });

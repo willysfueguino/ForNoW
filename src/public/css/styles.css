@@ -3,11 +3,69 @@
   display: flex;
 }
 
-#navbar {
-  display: flex;
-  height: 4rem;
-  padding: 0px 0px;
+.publishButton{
+  align-items: center;
+  justify-content: center;
 }
+
+.container {
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+}
+/* .card-img-overlay {
+  transform: translateY(13rem);
+  transition: transform 0.18s ease-in;
+  background-color: black;
+} */
+@media (min-width: 576px){
+.card-img-overlay {
+ transform: translateY(6rem);
+}
+.card-title{
+    font-size:18px;
+    margin:0!important;
+}
+.card-img-overlay .card-text {
+ font-size:11px;
+ margin:0!important;
+}
+.card-img-overlay .btn {
+ font-size:7px;
+}
+}
+.card-img-overlay .card-text {
+  opacity: 0;
+  transform: translateY(-6rem);
+  transition: opacity 0.05s ease-in, transform 0.25s ease-in;
+}
+.card-img-overlay .btn {
+  opacity: 0;
+  transform: translateY(2rem);
+}
+.card {
+  overflow: hidden;
+  background-color: #345;
+}
+.card:hover .card-img {
+  mix-blend-mode: overlay;
+}
+.card:hover .card-img-overlay {
+  transform: translateY(0);
+  transition: transform 0.25s ease-out;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.card:hover .card-text {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.5s ease-out, transform 0.2s ease-out;
+}
+.card:hover .btn {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.7s ease-out, transform 0.35s ease-out;
+}
+
 .navLogo{
   display: flex;
   justify-content: left;
@@ -22,5 +80,32 @@
   display: flex;
   width: 100%;
   height: 100%;
-  justify-content:center;
+}
+
+
+#createPostCard{
+  display: flex;
+  justify-content: center;
+  left: 30%;
+  right: auto;
+}
+
+#navbar {
+  display: flex;
+  height: 3.75rem;
+  padding: 0px 0px;
+}
+
+#saveButton{
+  display: flex;
+  padding: auto;
+  font-size: larger;
+  margin-left: 83%;
+}
+
+#cancelButton{
+  
+  font-size: larger;
+  margin-left: 83%;
+
 }

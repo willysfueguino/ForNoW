@@ -17,19 +17,19 @@
           <div class="card-body">
             <form action="/saveEntry" method="post">
               <div class="mb-3">
-                <label for="user" class="form-label">Titulo del Post:</label>
+                <label for="entryTitle" class="form-label">Titulo del Post:</label>
                 <input
                   type="text"
                   class="form-control"
                   id="entrySubject"
                   name="entrySubject"
                   placeholder="Titulo"
-                  tabindex="2"
+                  tabindex="1"
                   required
                 />
               </div>
               <div class="mb-3">
-                <label for="user" class="form-label">Texto del post:</label>
+                <label for="entryBody" class="form-label">Texto del post:</label>
                 <input
                   type="text"
                   size="500000"
@@ -40,19 +40,18 @@
                   id="entryBody"
                   name="entryBody"
                   placeholder="Inserte un texto"
-                  tabindex="1"
+                  tabindex="2"
                   required
                 />
               </div>
               <div class="mb-3">
-                <label for="user" class="form-label">Link de la imagen (opcional)</label>
+                <label for="entryURL" class="form-label">Link de la imagen (opcional)</label>
                 <input
-                  type="url"
+                  type="text"
                   class="form-control"
                   id="pictureLink"
                   name="pictureLink"
                   placeholder="Link de la imagen"
-                  tabindex="2"
                 />
               </div>
               <a href="/">

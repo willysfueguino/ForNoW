@@ -51,27 +51,28 @@ entriesController.postEntry = async (req, res) => {
 //TODO: PUT PAGINA PARA EDITAR USUARIO
 entriesController.formEditEntry = async (req, res) => {
   const { id } = req.params;
-  const user = await Entry.findOne({ where: { id: id } });
-  console.log(user);
-  res.render("editUser", {
-    titleEditUser: "Editar Usuario",
-    user: user,
+  const entry = await Entry.findOne({ where: { id: id } });
+  console.log(entry);
+  res.render("editEntry", {
+    titleEditEntry: "Editar Post",
+    entry: entry,
   });
 };
 
 entriesController.putEntry = async (req, res) => {
-  const { firstName, email, id } = req.body;
+  const { entryBody, entrySubject, pictureLink, id } = req.body;
   //validación de que no mande el dato del nombre para actualizar
-  if (!firstName || !email) {
+  if (!entryBody || !entrySubject) {
     return res.status(404).send({
       message:
-        "Es necesario que el parametro firstName o LastName tenga información para actualizar",
+        "Es necesario que el cuerpo del post o el titulo tenga información para actualizar",
     });
   }
   const updateEntry = Entry.update(
     {
-      firstName: firstName,
-      email: email,
+      entryBody: entryBody,
+      entrySubject: entrySubject,
+      pictureLink: pictureLink,
     },
     { where: { id: id } }
   );
@@ -81,9 +82,9 @@ entriesController.putEntry = async (req, res) => {
 
 //TODO:DELETE
 
-entriesController.deleteEntry = (req, res) => {
+entriesController.deleteEntry = async (req, res) => {
   const { id } = req.params;
-  const deleteEntry = Entry.destroy({ where: { id: id } });
+  const deleteEntry = await Entry.update({isDeleted: true},{ where: { id: id }});
   //validacion para saber si ya existe o no en la bd
   if (deleteEntry) {
     return res.redirect("/entries");
@@ -91,9 +92,9 @@ entriesController.deleteEntry = (req, res) => {
     //   .status(200)
     //   .send({ message: "Usuario eliminado de la base de datos" });
   } else {
-    // return res
-    //   .status(400)
-    //   .send({ message: "Usuario no existe en la base de datos" })
+    return res
+      .status(400)
+      .send({ message: "Usuario no existe en la base de datos" })
   }
 };
 

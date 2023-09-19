@@ -33,7 +33,7 @@
             <td><%= entries.id %></td>
             <td><%= entries.entrySubject %></td>
             <td><%= entries.entryBody %></td>
-            <td><%= entries.pictureLink %></td>
+            <td><img src=<%= entries.pictureLink %>></td>
             <td><%= entries.isDeleted %></td>
             <td>
               <a href="/editEntry/<%= entries.id %>" class="btn btn-success"

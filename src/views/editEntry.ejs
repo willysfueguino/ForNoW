@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=titleEditEntry%></title>
+    <%- include("partials/head")%>
+  </head>
+  <body>
+    <%- include("partials/navBar")%>
+
+    <!--  -->
+
+    <% if(entry) { %>
+      <div class="card bg-dark text-white">
+        <img class="card-img" src="/assets/img/header-bg.jpg" alt="Card image">
+        <div class="card-img-overlay" >
+          <div class="card text-white bg-secondary mb-3"  id="createPostCard" style="max-width: 35rem; opacity: 0.80">
+            <div class="card-header" style="align-items: center;">Crear Nuevo Post</div>
+            <div class="card-body">
+              <form action="/updateEntry" method="post">
+                <input id="id" name="id" value="<%= entry.id %>" hidden />
+                <div class="mb-3">
+                  <label for="entry" class="form-label">Titulo del Post</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="entrySubject"
+                    name="entrySubject"
+                    value="<%= entry.entrySubject %>"
+                    placeholder="Titulo del Post"
+                    tabindex="1"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="entry" class="form-label">Texto del Post</label>
+                  <input
+                    type="text"
+                    size="500000"
+                    rows="10"
+                    col="10"
+                    style="width:500px; height:300px;"
+                    class="form-control"
+                    id="entryBody"
+                    name="entryBody"
+                    value="<%= entry.entryBody %>"
+                    placeholder="Texto del Post"
+                    tabindex="2"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <label for="entry" class="form-label">Link de la imagen</label>
+                  <input
+                    type="url"
+                    class="form-control"
+                    id="pictureLink"
+                    name="pictureLink"
+                    value="<%= entry.pictureLink %>"
+                    placeholder="Link de la imagen"
+                    tabindex="2"
+                  />
+                </div>
+                <a href="/entries">
+                  <button type="button" class="btn btn-danger btn-lg " id="cancelButton">
+                  Cancelar
+                  </button>
+                  <button type="submit" class="btn btn-primary btn-lg " id="saveButton" >
+                    Guardar
+                  </button>
+                </a>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- <div class="container mt-4">
+      <div class="card border-secondary">
+        <div class="card-header">Editar Post</div>
+        <div class="card-body">
+          <form action="/updateEntry" method="post">
+            <input id="id" name="id" value="<%= entry.id %>" hidden />
+            <div class="mb-3">
+              <label for="entry" class="form-label">Titulo del Post</label>
+              <input
+                type="text"
+                class="form-control"
+                id="entrySubject"
+                name="entrySubject"
+                value="<%= entry.entrySubject %>"
+                placeholder="Titulo del Post"
+                tabindex="1"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="entry" class="form-label">Texto del Post</label>
+              <input
+                type="text"
+                class="form-control"
+                id="entryBody"
+                name="entryBody"
+                value="<%= entry.entryBody %>"
+                placeholder="Texto del Post"
+                tabindex="2"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="entry" class="form-label">Link de la imagen</label>
+              <input
+                type="url"
+                class="form-control"
+                id="pictureLink"
+                name="pictureLink"
+                value="<%= entry.pictureLink %>"
+                placeholder="Link de la imagen"
+                tabindex="2"
+                required
+              />
+            </div>
+            <button type="submit" class="btn btn-primary" tabindex="3">
+              Guardar
+            </button>
+            <a href="/entries" class="btn btn-secondary">Cancelar</a>
+          </form>
+        </div>
+      </div>
+    </div> -->
+    <% } %>
+
+    <!--  -->
+
+    <%- include("partials/footer")%>
+  </body>
+</html>

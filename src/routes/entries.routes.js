@@ -6,20 +6,20 @@ const { entriesController } = require("../controllers/entry.controller");
 //entriesRoutes.get("/user", entriesController.indexUsers);
 
 //ruta GET ALL USERS
-entriesRoutes.get("/user", entriesController.getAllUsers);
+entriesRoutes.get("/entries", entriesController.getAllEntries);
 
-//ruta GET USER BY ID
-// entriesRoutes.get("/user/:id", entriesController.getUserById);
+//ruta GET POST BY TEXT
+entriesRoutes.post("/searchPost", entriesController.getEntryByText);
 
 //ruta POST (crear usuario)
-entriesRoutes.get("/createUser", entriesController.formCreateUser);
-entriesRoutes.post("/saveUser", entriesController.postUser);
+entriesRoutes.get("/createEntry", entriesController.formCreateEntry);
+entriesRoutes.post("/saveEntry", entriesController.postEntry);
 
 //ruta PUT (actualizar al usuario)
-entriesRoutes.get("/editUser/:id", entriesController.formEditUser);
-entriesRoutes.post("/updateUser", entriesController.putUser);
+entriesRoutes.get("/editEntry/:id", entriesController.formEditEntry);
+entriesRoutes.post("/updateEntry", entriesController.putEntry);
 
 //ruta DELETE (eliminar)
-entriesRoutes.get("/deleteUser/:id", entriesController.deleteUser);
+entriesRoutes.get("/deleteEntry/:id", entriesController.deleteEntry);
 
 module.exports = entriesRoutes;

@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%=titleUser %></title>
+    <title><%=title %></title>
     <%- include("partials/head") %>
   </head>
   <body>
     <%- include("partials/navBar") %>
     <div class="container">
-      <a href="/createUser" class="btn btn-outline-primary mt-4"
+      <a href="/createEntry" class="btn btn-outline-primary mt-4"
         ><i class="bx bxs-plus-circle bx-lg"></i
       ></a>
       <a href="/" class="btn btn-outline-success mt-4"
@@ -21,22 +21,25 @@
         <thead>
           <tr>
             <th scope="col">N°</th>
-            <th scope="col">Usuario</th>
-            <th scope="col">Email</th>
-            <th scope="col">Acciones</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Cuerpo del Post</th>
+            <th scope="col">Link de la URL</th>
+            <th scope="col">Eliminado?</th>
           </tr>
         </thead>
         <tbody>
-          <% results.forEach((users)=>{ %>
+          <% results.forEach((entries)=>{ %>
           <tr>
-            <td><%= users.id %></td>
-            <td><%= users.firstName %></td>
-            <td><%= users.email %></td>
+            <td><%= entries.id %></td>
+            <td><%= entries.entrySubject %></td>
+            <td><%= entries.entryBody %></td>
+            <td><img src=<%= entries.pictureLink %>></td>
+            <td><%= entries.isDeleted %></td>
             <td>
-              <a href="/editUser/<%= users.id %>" class="btn btn-success"
+              <a href="/editEntry/<%= entries.id %>" class="btn btn-success"
                 >EDITAR</a
               >
-              <a href="/deleteUser/<%= users.id %>" class="btn btn-danger"
+              <a href="/deleteEntry/<%= entries.id %>" class="btn btn-danger"
                 >ELIMINAR</a
               >
             </td>

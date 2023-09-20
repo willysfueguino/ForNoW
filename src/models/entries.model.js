@@ -17,6 +17,11 @@ const Entry = sequelize.define(
       type: DataTypes.STRING(300),
       allowNull: true,
     },
+    isDeleted: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false,
+    },
   },
   {
     timestamps: true,

@@ -4,10 +4,16 @@
 }
 
 .publishButton{
+  margin-left: 25%;
   align-items: center;
   justify-content: center;
 }
 
+.entriesButton{
+  margin-right: 25%;
+  align-items: center;
+  justify-content: center;
+}
 .container {
   display: flex;
   align-items: center;

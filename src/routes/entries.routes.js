@@ -8,8 +8,8 @@ const { entriesController } = require("../controllers/entry.controller");
 //ruta GET ALL USERS
 entriesRoutes.get("/entries", entriesController.getAllEntries);
 
-//ruta GET USER BY ID
-// entriesRoutes.get("/user/:id", entriesController.getUserById);
+//ruta GET POST BY TEXT
+entriesRoutes.post("/searchPost", entriesController.getEntryByText);
 
 //ruta POST (crear usuario)
 entriesRoutes.get("/createEntry", entriesController.formCreateEntry);

@@ -1,26 +1,43 @@
+const { sequelize } = require("../database/database");
 const Entry = require("../models/entries.model");
 const entriesController = {};
 
-//TODO: INDEX USER
-// entriesController.indexUsers = (req, res) => {
-//   res.render("user", { titleuser: "Usuarios" });
-// };
-//TODO: GETALL
+entriesController.getEntryByText = async (req, res) => {
+  const queryText = req.body.queryText;
+  console.log("query");
+
+  try {
+    const entries = await Entry.findOne({
+      where: {entrySubject:queryText }
+    });
+    // console.log(entries);
+    if (entries != null) {
+      res.status(201).send({ title: "Posts", results: entries });  
+    } else {
+      res.render("index", { title: "No results found", results: entries });  
+    }
+  } catch (error) {
+    console.log("err: " + error);
+  } 
+  
+}
+
+//Controller listar todas las entradas
 entriesController.getAllEntries = async (req, res) => {
   const entries = await Entry.findAll();
 
-  res.render("Entry", { titleUser: "Posts", results: entries });
+  res.render("Entry", { title: "Posts", results: entries });
 };
 
-//TODO: POST: PAGINA DE INICIO
+//Controller form creacion de entradas
 entriesController.formCreateEntry = (req, res) => {
   res.render("createEntry", { titleCreateUser: "Nuevo Post" });
 };
 
-//PARA CREAR AL USUARIO
+//Controller para crear entradas
 entriesController.postEntry = async (req, res) => {
   const { entrySubject, entryBody, pictureLink } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   //validacion para los datos del body
   if (!entrySubject || !entryBody)
     return res.status(400).send({
@@ -48,7 +65,7 @@ entriesController.postEntry = async (req, res) => {
   }
 };
 
-//TODO: PUT PAGINA PARA EDITAR USUARIO
+//Controllers para editar entradas
 entriesController.formEditEntry = async (req, res) => {
   const { id } = req.params;
   const entry = await Entry.findOne({ where: { id: id } });
@@ -61,7 +78,7 @@ entriesController.formEditEntry = async (req, res) => {
 
 entriesController.putEntry = async (req, res) => {
   const { entryBody, entrySubject, pictureLink, id } = req.body;
-  //validación de que no mande el dato del nombre para actualizar
+  //validación de que mande datos para actualizar
   if (!entryBody || !entrySubject) {
     return res.status(404).send({
       message:
@@ -80,8 +97,7 @@ entriesController.putEntry = async (req, res) => {
   //res.send({ message: "Usuario editado con exito" });
 };
 
-//TODO:DELETE
-
+//Controller para borrar entradas
 entriesController.deleteEntry = async (req, res) => {
   const { id } = req.params;
   const deleteEntry = await Entry.update({isDeleted: true},{ where: { id: id }});
